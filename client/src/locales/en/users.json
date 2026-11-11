@@ -1,0 +1,82 @@
+{
+  "admins": {
+    "title": "Admins",
+    "description": "Manage administrator accounts."
+  },
+  "employees": {
+    "title": "Employees",
+    "description": "Manage employee accounts."
+  },
+  "searchPlaceholder": "Search by name or email…",
+  "table": {
+    "name": "Name",
+    "email": "Email",
+    "role": "Role",
+    "status": "Status",
+    "created": "Created",
+    "actions": "Actions",
+    "view": "View",
+    "noData": "No users found."
+  },
+  "status": {
+    "INVITED": "Invited",
+    "ACTIVE": "Active",
+    "DISABLED": "Disabled"
+  },
+  "deactivate": {
+    "title": "Deactivate user",
+    "description": "{{name}} will no longer be able to sign in. You can re-enable them later. Continue?",
+    "confirm": "Deactivate",
+    "cancel": "Cancel",
+    "success": "{{name}} has been deactivated."
+  },
+  "details": {
+    "notFound": "User not found.",
+    "accountSecurity": "Account & security",
+    "invitedBy": "Invited by",
+    "invitedBySystem": "System / bootstrap",
+    "joined": "Joined",
+    "lastActive": "Last active",
+    "neverActive": "Never signed in"
+  },
+  "invite": {
+    "description": "An invitation email will be sent. The invitee sets their own password on activation.",
+    "firstName": "First name",
+    "lastName": "Last name",
+    "email": "Email",
+    "phone": "Phone",
+    "success": "Invitation sent to {{email}}.",
+    "add": {
+      "ADMIN": "Add new admin",
+      "EMPLOYEE": "Add new employee"
+    }
+  },
+  "stats": {
+    "total": "Total accounts",
+    "active": "Active",
+    "invited": "Pending invites",
+    "thisPage": "On this page"
+  },
+  "activity": {
+    "title": "Recent activity",
+    "when": "When",
+    "action": "Action",
+    "target": "Target",
+    "result": "Result",
+    "noData": "No recorded activity.",
+    "results": {
+      "SUCCESS": "Success",
+      "FAILURE": "Failed"
+    },
+    "actions": {
+      "LOGIN_SUCCESS": "Signed in",
+      "LOGIN_FAILURE": "Failed sign-in",
+      "PASSWORD_CHANGED": "Changed password",
+      "PASSWORD_RESET": "Reset password",
+      "INVITATION_ACCEPTED": "Accepted invitation",
+      "LOGOUT": "Signed out",
+      "SESSION_REVOKED": "Revoked a session",
+      "SESSIONS_REVOKED_ALL": "Revoked all sessions"
+    }
+  }
+}

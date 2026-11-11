@@ -1,0 +1,55 @@
+{
+  "app": {
+    "name": "Itzik CRM"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "employees": "Employees",
+    "admins": "Admins",
+    "settings": "Settings"
+  },
+  "roles": {
+    "SUPER_ADMIN": "Super Admin",
+    "ADMIN": "Admin",
+    "EMPLOYEE": "Employee"
+  },
+  "actions": {
+    "logout": "Log out",
+    "goBack": "Go back",
+    "cancel": "Cancel",
+    "retry": "Try again"
+  },
+  "sidebar": {
+    "navigation": "Navigation",
+    "toggle": "Toggle sidebar",
+    "account": "Account"
+  },
+  "logoutConfirm": {
+    "title": "Log out?",
+    "description": "You will need to sign in again to continue.",
+    "confirm": "Log out",
+    "cancel": "Cancel"
+  },
+  "states": {
+    "loading": "Loading…",
+    "error": "Something went wrong. Please try again."
+  },
+  "password": {
+    "show": "Show password",
+    "hide": "Hide password"
+  },
+  "pagination": {
+    "label": "Pagination",
+    "total": "Total: {{count}}",
+    "pageInfo": "Page {{page}} of {{totalPages}}",
+    "prev": "Previous",
+    "next": "Next"
+  },
+  "validation": {
+    "required": "This field is required.",
+    "email": "Enter a valid email address.",
+    "minLength": "Use at least {{min}} characters.",
+    "passwordMismatch": "Passwords do not match.",
+    "phone": "Enter a valid phone number."
+  }
+}

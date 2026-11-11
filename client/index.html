@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Reset/activate links carry secret tokens in the URL: never send it as a Referer. -->
+    <meta name="referrer" content="no-referrer" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>Itzik CRM</title>
+    <script>
+      // Anti-FOUC: apply the persisted theme before first paint so refreshes
+      // don't flash the wrong theme. Mirrors ThemeProvider's logic.
+      (function () {
+        try {
+          var raw = localStorage.getItem("theme-storage");
+          var theme = raw ? JSON.parse(raw).state.theme : "system";
+          if (theme === "system") {
+            theme = window.matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light";
+          }
+          var root = document.documentElement;
+          root.classList.add(theme);
+          root.style.colorScheme = theme;
+        } catch (e) {
+          document.documentElement.classList.add("light");
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

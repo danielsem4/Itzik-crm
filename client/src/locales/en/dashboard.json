@@ -1,0 +1,5 @@
+{
+  "title": "Dashboard",
+  "welcome": "Welcome, {{name}}",
+  "description": "Your business at a glance. Business modules (customers, deals, tasks…) will appear here."
+}

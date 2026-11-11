@@ -1,0 +1,22 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# macOS "Keep Both" collision copies (e.g. "file 2.ts", "dir 3") — never commit these
+* [0-9]
+* [0-9].*
+* [0-9][0-9]
+* [0-9][0-9].*
+
+# TypeScript incremental build cache — regenerated, must never be tracked
+*.tsbuildinfo
+
+# macOS cruft
+.DS_Store

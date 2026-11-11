@@ -1,0 +1,82 @@
+{
+  "admins": {
+    "title": "מנהלים",
+    "description": "ניהול חשבונות מנהלים."
+  },
+  "employees": {
+    "title": "עובדים",
+    "description": "ניהול חשבונות עובדים."
+  },
+  "searchPlaceholder": "חיפוש לפי שם או דוא\"ל…",
+  "table": {
+    "name": "שם",
+    "email": "דוא\"ל",
+    "role": "תפקיד",
+    "status": "סטטוס",
+    "created": "נוצר",
+    "actions": "פעולות",
+    "view": "צפייה",
+    "noData": "לא נמצאו משתמשים."
+  },
+  "status": {
+    "INVITED": "הוזמן",
+    "ACTIVE": "פעיל",
+    "DISABLED": "מושבת"
+  },
+  "deactivate": {
+    "title": "השבתת משתמש",
+    "description": "{{name}} לא יוכל/תוכל להתחבר יותר. ניתן להפעיל מחדש בהמשך. להמשיך?",
+    "confirm": "השבתה",
+    "cancel": "ביטול",
+    "success": "{{name}} הושבת/ה."
+  },
+  "details": {
+    "notFound": "המשתמש לא נמצא.",
+    "accountSecurity": "חשבון ואבטחה",
+    "invitedBy": "הוזמן על ידי",
+    "invitedBySystem": "מערכת / אתחול",
+    "joined": "הצטרף",
+    "lastActive": "פעילות אחרונה",
+    "neverActive": "טרם התחבר"
+  },
+  "invite": {
+    "description": "יישלח דוא\"ל הזמנה. המוזמן יגדיר סיסמה משלו בעת ההפעלה.",
+    "firstName": "שם פרטי",
+    "lastName": "שם משפחה",
+    "email": "דוא\"ל",
+    "phone": "טלפון",
+    "success": "הזמנה נשלחה אל {{email}}.",
+    "add": {
+      "ADMIN": "הוספת מנהל חדש",
+      "EMPLOYEE": "הוספת עובד חדש"
+    }
+  },
+  "stats": {
+    "total": "סך הכל חשבונות",
+    "active": "פעילים",
+    "invited": "הזמנות ממתינות",
+    "thisPage": "בעמוד זה"
+  },
+  "activity": {
+    "title": "פעילות אחרונה",
+    "when": "מתי",
+    "action": "פעולה",
+    "target": "יעד",
+    "result": "תוצאה",
+    "noData": "אין פעילות מתועדת.",
+    "results": {
+      "SUCCESS": "הצליח",
+      "FAILURE": "נכשל"
+    },
+    "actions": {
+      "LOGIN_SUCCESS": "התחבר",
+      "LOGIN_FAILURE": "התחברות נכשלה",
+      "PASSWORD_CHANGED": "שינה סיסמה",
+      "PASSWORD_RESET": "איפס סיסמה",
+      "INVITATION_ACCEPTED": "קיבל הזמנה",
+      "LOGOUT": "התנתק",
+      "SESSION_REVOKED": "ביטל סשן",
+      "SESSIONS_REVOKED_ALL": "ביטל את כל הסשנים"
+    }
+  }
+}

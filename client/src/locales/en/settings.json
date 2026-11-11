@@ -1,0 +1,31 @@
+{
+  "title": "Settings",
+  "profile": {
+    "title": "Profile",
+    "name": "Name",
+    "email": "Email",
+    "role": "Role"
+  },
+  "appearance": {
+    "title": "Appearance",
+    "description": "Choose how the app looks on this device.",
+    "theme": {
+      "light": "Light",
+      "dark": "Dark",
+      "system": "System"
+    }
+  },
+  "language": {
+    "title": "Language",
+    "description": "Select your preferred language."
+  },
+  "password": {
+    "title": "Change password",
+    "description": "For sensitive changes you may be asked to sign in again.",
+    "current": "Current password",
+    "new": "New password",
+    "confirm": "Confirm new password",
+    "submit": "Update password",
+    "success": "Your password has been updated."
+  }
+}

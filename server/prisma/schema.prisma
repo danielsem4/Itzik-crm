@@ -1,0 +1,130 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../node_modules/.prisma/client"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// Role model. The role→permission contract lives in src/shared/authz/.
+// Trust order: EMPLOYEE < ADMIN < SUPER_ADMIN. Exactly one active SUPER_ADMIN,
+// provisioned via the bootstrap CLI — never through a normal API.
+enum Role {
+  SUPER_ADMIN
+  ADMIN
+  EMPLOYEE
+}
+
+// Account lifecycle states. No permanent lockout — repeated failures are
+// throttled by the rate limiter, not a persistent lock.
+enum UserStatus {
+  INVITED
+  ACTIVE
+  DISABLED
+}
+
+model User {
+  id           String     @id @default(uuid())
+  email        String     @unique
+  // Nullable: an INVITED account has no password until activation sets one.
+  passwordHash String?    @map("password_hash")
+  // Derived display/search field ("<firstName> <lastName>").
+  name         String
+  firstName    String?    @map("first_name")
+  lastName     String?    @map("last_name")
+  phone        String?    @map("phone")
+  // Required, no default: a role must be assigned explicitly through a
+  // controlled creation flow (deny-by-default).
+  role         Role
+  // Explicit, no default: a new account is INVITED until activation, then
+  // ACTIVE; disablement is prompt and revokes all sessions.
+  status       UserStatus @map("status")
+  // Set on password change/reset; used for audit and reasoning about sessions.
+  passwordChangedAt DateTime? @map("password_changed_at")
+  // Soft reference to the inviter (no FK: the inviter may later be removed).
+  invitedById  String?    @map("invited_by_id")
+  createdAt    DateTime   @default(now()) @map("created_at")
+  updatedAt    DateTime   @updatedAt @map("updated_at")
+
+  sessions            Session[]
+  passwordResetTokens PasswordResetToken[]
+
+  @@map("users")
+}
+
+// Opaque server-side session. The raw session token lives ONLY in the cookie;
+// the DB stores its SHA-256 hash. `csrfToken` is the per-session synchronizer
+// CSRF token. Validity = not revoked AND within idle (lastSeenAt) AND absolute
+// (expiresAt) limits.
+model Session {
+  id              String    @id @default(uuid())
+  userId          String    @map("user_id")
+  tokenHash       String    @unique @map("token_hash")
+  csrfToken       String    @map("csrf_token")
+  authenticatedAt DateTime  @map("authenticated_at")
+  lastSeenAt      DateTime  @map("last_seen_at")
+  expiresAt       DateTime  @map("expires_at")
+  revokedAt       DateTime? @map("revoked_at")
+  ip              String?
+  userAgent       String?   @map("user_agent")
+  createdAt       DateTime  @default(now()) @map("created_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("sessions")
+}
+
+// Account provisioning invitation. The raw token is emailed once; only its
+// SHA-256 hash is stored. Single-use + expiring. Role is bound to the
+// invitation and never client-assignable.
+model Invitation {
+  id          String    @id @default(uuid())
+  email       String
+  targetRole  Role      @map("target_role")
+  invitedById String?   @map("invited_by_id")
+  tokenHash   String    @unique @map("token_hash")
+  expiresAt   DateTime  @map("expires_at")
+  consumedAt  DateTime? @map("consumed_at")
+  createdAt   DateTime  @default(now()) @map("created_at")
+
+  @@index([email])
+  @@map("invitations")
+}
+
+// Password-reset token. Raw token emailed once; only its SHA-256 hash stored.
+// Single-use + short-lived.
+model PasswordResetToken {
+  id         String    @id @default(uuid())
+  userId     String    @map("user_id")
+  tokenHash  String    @unique @map("token_hash")
+  expiresAt  DateTime  @map("expires_at")
+  consumedAt DateTime? @map("consumed_at")
+  createdAt  DateTime  @default(now()) @map("created_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("password_reset_tokens")
+}
+
+// Append-only security audit log. MUST NEVER contain passwords, tokens, or
+// session secrets. `actorUserId` is a soft reference (no FK) so the log
+// survives user deletion.
+model AuditLog {
+  id          String   @id @default(uuid())
+  actorUserId String?  @map("actor_user_id")
+  action      String
+  targetType  String?  @map("target_type")
+  targetId    String?  @map("target_id")
+  result      String
+  ip          String?
+  userAgent   String?  @map("user_agent")
+  metadata    Json?
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  @@index([actorUserId])
+  @@index([createdAt])
+  @@map("audit_logs")
+}

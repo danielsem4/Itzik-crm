@@ -1,0 +1,55 @@
+{
+  "app": {
+    "name": "Itzik CRM"
+  },
+  "nav": {
+    "dashboard": "לוח בקרה",
+    "employees": "עובדים",
+    "admins": "מנהלים",
+    "settings": "הגדרות"
+  },
+  "roles": {
+    "SUPER_ADMIN": "מנהל-על",
+    "ADMIN": "מנהל",
+    "EMPLOYEE": "עובד"
+  },
+  "actions": {
+    "logout": "התנתקות",
+    "goBack": "חזרה",
+    "cancel": "ביטול",
+    "retry": "נסו שוב"
+  },
+  "sidebar": {
+    "navigation": "ניווט",
+    "toggle": "הצג/הסתר סרגל צד",
+    "account": "חשבון"
+  },
+  "logoutConfirm": {
+    "title": "להתנתק?",
+    "description": "יהיה צורך להתחבר שוב כדי להמשיך.",
+    "confirm": "התנתקות",
+    "cancel": "ביטול"
+  },
+  "states": {
+    "loading": "טוען…",
+    "error": "משהו השתבש. נסו שוב."
+  },
+  "password": {
+    "show": "הצג סיסמה",
+    "hide": "הסתר סיסמה"
+  },
+  "pagination": {
+    "label": "ניווט בין עמודים",
+    "total": "סה\"כ: {{count}}",
+    "pageInfo": "עמוד {{page}} מתוך {{totalPages}}",
+    "prev": "הקודם",
+    "next": "הבא"
+  },
+  "validation": {
+    "required": "שדה חובה.",
+    "email": "הזינו כתובת אימייל תקינה.",
+    "minLength": "יש להשתמש לפחות ב-{{min}} תווים.",
+    "passwordMismatch": "הסיסמאות אינן תואמות.",
+    "phone": "הזינו מספר טלפון תקין."
+  }
+}
